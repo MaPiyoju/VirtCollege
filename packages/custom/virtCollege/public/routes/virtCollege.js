@@ -1,10 +1,7 @@
 'use strict';
 
-angular.module('mean.virtCollege').config(['$stateProvider',
-  function($stateProvider) {
-    $stateProvider.state('virtCollege example page', {
-      url: '/virtCollege/example',
-      templateUrl: 'virtCollege/views/index.html'
-    });
+angular.module('mean.virtCollege').config(['$viewPathProvider','$stateProvider',
+  function($viewPathProvider, $stateProvider) {
+    $viewPathProvider.override('system/views/index.html', 'virtCollege/views/index.html');
   }
 ]);

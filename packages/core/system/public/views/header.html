@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" ui-sref="home" mean-token="'site-title'">MEAN</a>
+                <a class="navbar-brand" ui-sref="home" mean-token="'site-title'">Virtual College</a>
             </div>
         </div>
 
@@ -27,9 +27,8 @@
                     <div class="pull-right" mean-translate></div>
                 </div>
                 <ul class="navbar-nav nav auth-link" ng-show="!hdrctr.hdrvars.authenticated">
-                    <li><a ui-sref='auth.register'>Join</a></li>
                     <li class="divider-vertical"></li>
-                    <li><a ui-sref='auth.login'>Log In</a></li>
+                    <li><a ui-sref='auth.login'>Iniciar sesión</a></li>
                 </ul>
                 <ul class="navbar-nav nav" ng-show="hdrctr.hdrvars.authenticated">
                     <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
@@ -37,7 +36,7 @@
                             <span>{{hdrctr.hdrvars.user.name}}</span> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" ng-click="hdrctr.logout()">Log Out</a></li>
+                            <li><a href="#" ng-click="hdrctr.logout()">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>

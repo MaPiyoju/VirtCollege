@@ -28,8 +28,6 @@ VirtCollege.register(function(app, auth, database, system) {
 
   VirtCollege.aggregateAsset('css', 'virtCollege.css');
 
-  VirtCollege.angularDependencies(['mean.system']);
-
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback

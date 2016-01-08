@@ -31,6 +31,21 @@ var validateUniqueEmail = function(value, callback) {
   });
 };
 
+var validateUniqueDoc = function(value, callback) {
+  var User = mongoose.model('User');
+  User.find({
+    $and: [{
+      numero_documento: value
+    }, {
+      _id: {
+        $ne: this._id
+      }
+    }]
+  }, function(err, user) {
+    callback(err || user.length === 0);
+  });
+};
+
 /**
  * Getter
  */
@@ -43,7 +58,38 @@ var escapeProperty = function(value) {
  */
 
 var UserSchema = new Schema({
-  name: {
+  nombres: {
+    type: String,
+    required: true,
+    get: escapeProperty
+  },
+  apellidos: {
+    type: String,
+    required: true,
+    get: escapeProperty
+  },
+  fecha_nacimiento: {
+    type: Date,
+    required: true,
+    get: escapeProperty
+  },
+  tipo_documento: {
+    type: String,
+    required: true,
+    get: escapeProperty
+  },
+  numero_documento: {
+    type: String,
+    required: true,
+    unique: true,
+    get: escapeProperty,
+    validate: [validateUniqueDoc, 'El documento proporcionado ya se encuentra en uso']
+  },
+  roles: {//Tipo de usuario (Varios roles pueden ser aplicado al mismo usuario)
+    type: Array,
+    default: ['authenticated', 'anonymous']
+  },
+  eps: {
     type: String,
     required: true,
     get: escapeProperty
@@ -54,17 +100,25 @@ var UserSchema = new Schema({
     unique: true,
     // Regexp to validate emails with more strict rules as added in tests/users.js which also conforms mostly with RFC2822 guide lines
     match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please enter a valid email'],
-    validate: [validateUniqueEmail, 'E-mail address is already in-use']
+    validate: [validateUniqueEmail, 'La dirección de correo proporcionada ya se encuentra en uso']
+  },
+  direccion: {
+    type: String,
+    required: true
+  },
+  telefono: {
+    type: String,
+    required: true
+  },
+  id_institucion: {
+    type: String,
+    required: true
   },
   username: {
     type: String,
     unique: true,
     required: true,
     get: escapeProperty
-  },
-  roles: {
-    type: Array,
-    default: ['authenticated', 'anonymous']
   },
   hashed_password: {
     type: String,
