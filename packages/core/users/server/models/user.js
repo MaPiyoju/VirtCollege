@@ -60,38 +60,33 @@ var escapeProperty = function(value) {
 var UserSchema = new Schema({
   nombres: {
     type: String,
-    required: true,
     get: escapeProperty
   },
   apellidos: {
     type: String,
-    required: true,
     get: escapeProperty
   },
   fecha_nacimiento: {
-    type: Date,
-    required: true,
-    get: escapeProperty
+    type: Date
   },
   tipo_documento: {
-    type: String,
-    required: true,
-    get: escapeProperty
+    type: String
   },
   numero_documento: {
     type: String,
-    required: true,
     unique: true,
-    get: escapeProperty,
     validate: [validateUniqueDoc, 'El documento proporcionado ya se encuentra en uso']
   },
   roles: {//Tipo de usuario (Varios roles pueden ser aplicado al mismo usuario)
     type: Array,
-    default: ['authenticated', 'anonymous']
+    default: ['authenticated', 'anonymous', 'admin']
   },
   eps: {
     type: String,
-    required: true,
+    get: escapeProperty
+  },
+  tipo_sangre: {
+    type: String,
     get: escapeProperty
   },
   email: {
@@ -104,20 +99,19 @@ var UserSchema = new Schema({
   },
   direccion: {
     type: String,
-    required: true
+    get: escapeProperty
   },
   telefono: {
     type: String,
-    required: true
+    get: escapeProperty
   },
   id_institucion: {
     type: String,
-    required: true
+    default: 1
   },
   username: {
     type: String,
     unique: true,
-    required: true,
     get: escapeProperty
   },
   hashed_password: {

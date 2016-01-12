@@ -37,7 +37,7 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
 
     function MeanUserKlass(){
       this.aclDefer = $q.defer();
-      this.name = 'users';
+      this.nombres = 'users';
       this.user = {};
       this.acl = this.aclDefer.promise;
       this.registerForm = false;
@@ -109,7 +109,7 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
 
     MeanUserKlass.prototype.onIdFail = function (response) {
       $location.path(response.redirect);
-      this.loginError = 'Authentication failed.';
+      this.loginError = 'Autenticación fallida.';
       this.registerError = response;
       this.validationError = response.msg;
       this.resetpassworderror = response.msg;
@@ -137,7 +137,8 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
         password: user.password,
         confirmPassword: user.confirmPassword,
         username: user.username,
-        name: user.name
+        numero_documento: "123",
+        nombres: user.nombres
       })
         .success(this.onIdentity.bind(this))
         .error(this.onIdFail.bind(this));

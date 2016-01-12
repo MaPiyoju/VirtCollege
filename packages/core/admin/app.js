@@ -36,13 +36,13 @@ Admin.register(function(app, auth, database, circles) {
         icon: icons + 'themes.png',
         menu: 'admin'
     });
-    Admin.menus.add({
+    /*Admin.menus.add({
         roles: ['admin'],
         title: 'SETTINGS',
         link: 'settings',
         icon: icons + 'settings.png',
         menu: 'admin'
-    });
+    });*/
     Admin.menus.add({
         roles: ['admin'],
         title: 'USERS',

@@ -9,20 +9,32 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
         Circles.mine(function(acl) {
 
             var circles = acl.allowed;
+            var tipoDoc = ['Tarjeta de identidad','Cedula de ciudadania','Cedula de extranjería'];
 
             $scope.userSchema = [{
-                title: 'Email',
-                schemaKey: 'email',
-                type: 'email',
-                inTable: true
-            }, {
-                title: 'Name',
-                schemaKey: 'name',
+                title: 'Nombres',
+                schemaKey: 'nombres',
                 type: 'text',
                 inTable: true
             }, {
-                title: 'Username',
-                schemaKey: 'username',
+                title: 'Apellidos',
+                schemaKey: 'apellidos',
+                type: 'text',
+                inTable: true
+            }, {
+                title: 'Fecha de nacimiento',
+                schemaKey: 'fecha_nacimiento',
+                type: 'text',
+                inTable: false
+            }, {
+                title: 'Tipo de documento',
+                schemaKey: 'tipo_documento',
+                type: 'select',
+                options: tipoDoc,
+                inTable: true
+            }, {
+                title: 'N. de documento',
+                schemaKey: 'numero_documento',
                 type: 'text',
                 inTable: true
             }, {
@@ -32,12 +44,32 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
                 options: circles,
                 inTable: true
             }, {
-                title: 'Password',
+                title: 'EPS',
+                schemaKey: 'eps',
+                type: 'text',
+                inTable: false
+            }, {
+                title: 'Tipo de sangre',
+                schemaKey: 'tipo_sangre',
+                type: 'text',
+                inTable: false
+            }, {
+                title: 'Email',
+                schemaKey: 'email',
+                type: 'email',
+                inTable: true
+            }, {
+                title: 'Dirección',
+                schemaKey: 'direccion',
+                type: 'text',
+                inTable: false
+            }, {
+                title: 'Contraseña',
                 schemaKey: 'password',
                 type: 'password',
                 inTable: false
             }, {
-                title: 'Repeat password',
+                title: 'Repetir contraseña',
                 schemaKey: 'confirmPassword',
                 type: 'password',
                 inTable: false
@@ -57,13 +89,20 @@ angular.module('mean.admin').controller('UsersController', ['$scope', 'Global', 
             if (!valid) return;
             if (!$scope.users) $scope.users = [];
 
-            var user = new Users({
+            var user = new Users({                
+                nombres: $scope.user.nombres,
+                apellidos: $scope.user.apellidos,
+                fecha_nacimiento: $scope.user.fecha_nacimiento, 
+                tipo_documento: $scope.user.tipo_documento,
+                numero_documento: $scope.user.numero_documento,
+                roles: $scope.user.roles,
+                eps: $scope.user.eps,
+                tipo_sangre: $scope.user.tipo_sangre,
                 email: $scope.user.email,
-                name: $scope.user.name,
-                username: $scope.user.username,
+                direccion: $scope.user.direccion,
+                telefono: $scope.user.telefono,
                 password: $scope.user.password,
-                confirmPassword: $scope.user.confirmPassword,
-                roles: $scope.user.roles
+                confirmPassword: $scope.user.confirmPassword                
             });
 
             user.$save(function(data, headers) {

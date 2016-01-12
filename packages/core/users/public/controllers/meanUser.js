@@ -25,17 +25,17 @@ angular.module('mean.users')
       
       vm.input = {
         type: 'password',
-        placeholder: 'Password',
-        confirmPlaceholder: 'Repeat Password',
+        placeholder: 'Contraseña',
+        confirmPlaceholder: 'Repite la contraseña',
         iconClass: '',
-        tooltipText: 'Show password'
+        tooltipText: 'Mostrar contraseña'
       };
 
       vm.togglePasswordVisible = function() {
         vm.input.type = vm.input.type === 'text' ? 'password' : 'text';
-        vm.input.placeholder = vm.input.placeholder === 'Password' ? 'Visible Password' : 'Password';
+        vm.input.placeholder = vm.input.placeholder === 'Contraseña' ? 'Contraseña visible' : 'Contraseña';
         vm.input.iconClass = vm.input.iconClass === 'icon_hide_password' ? '' : 'icon_hide_password';
-        vm.input.tooltipText = vm.input.tooltipText === 'Show password' ? 'Hide password' : 'Show password';
+        vm.input.tooltipText = vm.input.tooltipText === 'Mostrar contraseña' ? 'Ocultar contraseña' : 'Mostrar contraseña';
       };
 
       $rootScope.$on('loginfailed', function(){
@@ -58,24 +58,24 @@ angular.module('mean.users')
 
       vm.input = {
         type: 'password',
-        placeholder: 'Password',
-        placeholderConfirmPass: 'Repeat Password',
+        placeholder: 'Contraseña',
+        placeholderConfirmPass: 'Repite la contraseña',
         iconClassConfirmPass: '',
-        tooltipText: 'Show password',
-        tooltipTextConfirmPass: 'Show password'
+        tooltipText: 'Mostrar contraseña',
+        tooltipTextConfirmPass: 'Mostrar contraseña'
       };
 
       vm.togglePasswordVisible = function() {
         vm.input.type = vm.input.type === 'text' ? 'password' : 'text';
-        vm.input.placeholder = vm.input.placeholder === 'Password' ? 'Visible Password' : 'Password';
+        vm.input.placeholder = vm.input.placeholder === 'Contraseña' ? 'Contraseña visible' : 'Contraseña';
         vm.input.iconClass = vm.input.iconClass === 'icon_hide_password' ? '' : 'icon_hide_password';
-        vm.input.tooltipText = vm.input.tooltipText === 'Show password' ? 'Hide password' : 'Show password';
+        vm.input.tooltipText = vm.input.tooltipText === 'Mostrar contraseña' ? 'Ocultar contraseña' : 'Mostrar contraseña';
       };
       vm.togglePasswordConfirmVisible = function() {
         vm.input.type = vm.input.type === 'text' ? 'password' : 'text';
-        vm.input.placeholderConfirmPass = vm.input.placeholderConfirmPass === 'Repeat Password' ? 'Visible Password' : 'Repeat Password';
+        vm.input.placeholderConfirmPass = vm.input.placeholderConfirmPass === 'Repite la contraseña' ? 'Contraseña visible' : 'Repite la contraseña';
         vm.input.iconClassConfirmPass = vm.input.iconClassConfirmPass === 'icon_hide_password' ? '' : 'icon_hide_password';
-        vm.input.tooltipTextConfirmPass = vm.input.tooltipTextConfirmPass === 'Show password' ? 'Hide password' : 'Show password';
+        vm.input.tooltipTextConfirmPass = vm.input.tooltipTextConfirmPass === 'Mostrar contraseña' ? 'Ocultar contraseña' : 'Mostrar contraseña';
       };
 
       // Register the register() function
